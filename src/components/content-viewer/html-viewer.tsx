@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { apiProxyRequest } from '../../lib/api-client-proxy';
 import type { AudioFFMPEGResponse } from '../../types/media';
-import { useChatPanelStore } from '../../store/chatStore';
+// import { useChatPanelStore } from '../../store/chatStore';
 
 export default function HtmlViewer({ url }: { url: string }) {
   const [htmlContent, setHtmlContent] = useState('');
