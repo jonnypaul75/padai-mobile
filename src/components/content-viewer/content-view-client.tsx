@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Flashcard from "./flash-cards";
 import QuizPlayer from "./quiz-player";
 import { apiProxyRequest } from "../../lib/api-client-proxy";
@@ -44,6 +44,22 @@ export default function ContentViewClient() {
   const queryParams = new URLSearchParams(location.search);
   const resourceId = queryParams.get("resourceId"); // ?myParam=value
   const [pdfData, setPdfData] = useState<Uint8Array | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [pdfHeight, setPdfHeight] = useState(0); // Will be set after mount
+  const isResizing = useRef(false);
+  useEffect(() => {
+    // On mount, set default to 30vh of 55vh = (30/55)*100%
+    const container = containerRef.current;
+    if (container) {
+      const containerHeight = container.getBoundingClientRect().height;
+      setPdfHeight(containerHeight * 0.3); // 30% initial
+      console.log(pdfHeight);
+    }
+  }, []);
+  const handleMouseDown = () => {
+    isResizing.current = true;
+  };
+
 
   const hindiQuiz = [
     {
@@ -509,7 +525,7 @@ export default function ContentViewClient() {
   return (
     <>
       <IonHeader>
-         <Header />
+        <Header />
       </IonHeader>
       <MainWrapper>
         <div className="container">
@@ -684,8 +700,9 @@ export default function ContentViewClient() {
             ) : resource.contentType === "web-link" ? (
               <>
                 <div className="flashcard-container text-start !mt-0">
+
                   {/* 📄 PDF Viewer */}
-                  <div className="bg-white pdf-lib" style={{overflow: 'scroll' }}>
+                  <div className="bg-white pdf-lib" style={{ overflow: 'scroll' }}>
                     {pdfData ? (
 
 
@@ -695,9 +712,20 @@ export default function ContentViewClient() {
                       <p>Loading PDF...</p>
                     )}
                   </div>
-                    <div style={{maxHeight:'Calc(55vh - 20px)', overflow: 'scroll',textAlign:'left'}}>
-                      <HtmlViewer url={resource.script || ""} />
-                    </div>
+                  {/* Splitter Bar */}
+                  <div
+                    style={{
+                      height: '6px',
+                      background: '#ccc',
+                      cursor: 'row-resize',
+                      flexShrink: 0,
+                    }}
+                    onMouseDown={handleMouseDown}
+                  />
+
+                  <div style={{ maxHeight: 'Calc(55vh - 20px)', overflow: 'scroll', textAlign: 'left' }}>
+                    <HtmlViewer url={resource.script || ""} />
+                  </div>
                   {/* <hr className="border text-start mb-4" /> */}
                   {/* <button
                   className="w-fit px-6 py-3 rounded bg-[#f97007] text-white cursor-pointer inline-block ms-3 mb-5"

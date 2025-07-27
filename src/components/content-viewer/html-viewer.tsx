@@ -217,7 +217,7 @@ export default function HtmlViewer({ url }: { url: string }) {
             0.75x
           </button>
           <button
-            className="text-sm text-white bg-blue-600 hover:bg-blue-700 px-2 py-1 w-[60px] rounded"
+            className="text-sm text-white bg-blue-600 hover:bg-blue-700 px-2 py-1 w-[50px] rounded"
             onClick={() => setPlaybackSpeed(1)}
           >
             1x
@@ -236,18 +236,18 @@ export default function HtmlViewer({ url }: { url: string }) {
             onChange={changeVolume}
             defaultValue="1"
             title="Volume"
-            className="w-[80px]"
+            className="w-[70px]"
           />
           <div className="flex gap-2">
             <button
-              className="text-white bg-green-600 hover:bg-green-700 px-3 py-1 rounded"
+              className="text-white bg-green-600 hover:bg-green-500 px-3 py-1 rounded"
               onClick={toggleSpeech}
             >
               {isPlaying ? (isPaused ? '▶️ Resume' : '⏸ Pause') : '🔊 Generate Audio'}
             </button>
             {isPlaying && (
               <button
-                className="text-white bg-gray-600 hover:bg-gray-700 px-3 py-1 rounded"
+                className="text-white bg-gray-600 hover:bg-gray-500 px-3 py-1 rounded"
                 onClick={stopSpeech}
               >
                 ⏹ Stop
