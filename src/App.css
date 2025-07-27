@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* Declare the font variable */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Declare the font variable */
+
+:root {
+    --font-lato: 'Lato', sans-serif;
+}
+
+body {
+
+    font-family: var(--font-lato), sans-serif;
+}
+
+svg {
+    @apply cursor-pointer
+}
+
+/* Container similar to your #bottom-navigation */
+.ion-tabbar-container {
+    margin-bottom: 100px;
+    position: fixed;
+    width: 100%;
+    max-width: 600px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    background: #fff;
+    filter: drop-shadow(0 -4px 4px rgba(0, 0, 0, .04));
+    z-index: 99;
+    text-align: center;
+    height: 70px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+/* Ionic tab button */
+.ion-tab-button {
+    width: 64px;
+    height: 64px;
+    position: relative;
+    top: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Active tab button styling */
+.ion-tab-button.tab-active {
+    top: -50px;
+    width: 64px;
+    height: 64px;
+    box-shadow: inset 0 -11px 4px -5px #0000001f;
+    border-radius: 30px;
+    background: #F97316;
+    /* your orange */
+}
+
+/* Active icon color */
+.ion-tab-button.tab-active ion-icon {
+    filter: invert(1);
+    stroke: white;
+    /* if needed */
+}
+
+/* Label style (optional) */
+.ion-tab-button ion-label {
+    margin-top: 4px;
+    font-weight: 500;
+    color: #444;
+}
+
+/* Active label color */
+.ion-tab-button.tab-active ion-label {
+    color: white;
+}
+
+/* Bottom underline / orange border */
+.ion-tab-button .orange-boder {
+    width: 24px;
+    height: 8px;
+    border-radius: 4px;
+    background: #f97316;
+    margin-top: 12px;
+    display: none;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Show border on active tab */
+.ion-tab-button.tab-active .orange-boder {
+    display: block;
+    /* You can add transition if needed */
+}
+
+.pdf-lib>div>div:first-child {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: #fff;
+}
+
+.pdf-lib>div {
+    height: auto !important;
+    display: block !important;
+    flex-direction: initial !important;
+
+}
+
+.content-card.media-player .scroller {
+    max-height: 436px !important;
+}
+
+.fixed-title {
+    position: fixed;
+    bottom: 115px;
+    z-index: 9999;
+    color: #b1b1b1;
+    left: 10px;
+}
+
+.video-div:not(.active) .fixed-title {
+    display: none;
+}
+.pdf-lib{
+    height: calc(45vh - 25px) !important;
+}

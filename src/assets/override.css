@@ -1,0 +1,66 @@
+.slick-dots {
+
+  bottom: 130px;
+}
+
+.slick-dots li button:before {
+
+  font-size: 14px;
+
+}
+
+.slick-dots li.slick-active button:before {
+  opacity: 1;
+  color: #000;
+  width: 30px;
+  background: #000;
+  line-height: 1;
+  height: 16px;
+  border-radius: 10px;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: Calc(100vw - 40px);
+  height: 100vh;
+  max-width: 600px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out;
+  z-index: 999;
+}
+
+.sidebar-visible {
+  transform: translateX(0);
+}
+
+.sidebar-hidden {
+  transform: translateX(-100%);
+}
+
+.bg-overlay {
+  display: flex;
+  height: 100vh;
+  background: #0000009c;
+  z-index: 99;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+}
+
+.input-group {
+  position: relative;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  width: 100%;
+}
+.no-poster .vjs-poster{
+  display: none;
+}
+.content-card.video-content{
+  max-height: calc(100vh - 50px);
+  overflow: scroll;
+}
