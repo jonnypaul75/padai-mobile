@@ -14,14 +14,14 @@ import { useHistory } from "react-router-dom";
 import { IonContent, IonHeader, IonPage } from "@ionic/react";
 import backIcon from "../../assets/images/icons/chevron-right.svg";
 import Header from "../../components/header";
-
+import ongoing2 from "../../assets/images/courses/ongoing-2.png";
 export default function ChapterDetails() {
   const history = useHistory();
   const [loading, setLoading] = useState(true);
   const [content, setContent] = useState<ChapterContent | null>(null);
   const [chapterName, setChapterName] = useState<string>();
   const [chapterInfo, setChapterInfo] = useState<string>();
-  const [chapterImage, setChapterImage] = useState<string>();
+  // const [chapterImage, setChapterImage] = useState<string>();
 
   const activeDropdown = (event: React.MouseEvent<HTMLSpanElement>) => {
     const target = event.target as HTMLElement;
@@ -44,7 +44,7 @@ export default function ChapterDetails() {
         setContent(result?.chapters[1]?.content);
         setChapterName(result?.chapters[1].title);
         setChapterInfo(result?.chapters[1].info);
-        setChapterImage(result?.chapters[1].image);
+        // setChapterImage(result?.chapters[1].image);
       }
       setLoading(false);
     }
@@ -81,15 +81,15 @@ export default function ChapterDetails() {
                 <div className="ongoing-section-details-wrap">
                   <div className="ongoing-first">
                     <img
-                      src={chapterImage}
+                      src={ongoing2}
                       alt={"course-img"}
                       width={70}
                       height={70}
-                      onError={() =>
-                        setChapterImage(
-                          "/src/assets/images/courses/ongoing-2.png"
-                        )
-                      } // fallback image path
+                      // onError={() =>
+                      //   setChapterImage(
+                      //     "/src/assets/images/courses/ongoing-2.png"
+                      //   )
+                      // } // fallback image path
                     />
                   </div>
                   <div className="ongoing-second">
